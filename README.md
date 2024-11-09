@@ -9,7 +9,7 @@
 1. **Navigate to the Project Directory**:
    Move into the cloned project directory:
    ```bash
-   cd ai-streamlit-apps
+   cd CPAT-frontend
    ```
 
 2. **Create a Virtual Environment (Optional but Recommended)**:
