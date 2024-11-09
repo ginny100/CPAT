@@ -5,24 +5,49 @@ import uuid
 st.set_page_config(layout="wide")
 
 # Set up the Streamlit interface
-page = st.title("LLMs Playground")
+st.title("LLMs Playground")
 page = st.markdown("""
     Welcome to the Large Language Models Playground! 🚀
 """)
 
-st.session_state.flask_api_url = "https://e963-34-138-100-33.ngrok-free.app/chat"  # Set your Flask API URL here # TODO: move to .env
-
-col1, col3, col2 = st.columns([6, 0.1, 3])
-
 # Generate a random session ID
 session_id = str(uuid.uuid4())
+
+# Initialize the session state for the backend URL
+if "flask_api_url" not in st.session_state:
+    st.session_state.flask_api_url = None
+
+# Function to display the dialog and set the URL
+@st.dialog("Setup Backend")
+def setup_backend():
+    st.markdown(
+        """
+        Run the backend [here]() and paste the Ngrok link below.
+        """
+    )
+    link = st.text_input("Backend URL", "")
+    if st.button("Save"):
+        st.session_state.flask_api_url = "{}/chat".format(link) # Update ngrok URL
+        st.rerun()  # Re-run the app to close the dialog
+
+# Display the setup option if the URL is not set
+if st.session_state.flask_api_url is None:
+    setup_backend()
+
+# Once the URL is set, display it or proceed with other functionality
+if st.session_state.flask_api_url:
+    st.success(f"Backend is set to: {st.session_state.flask_api_url}")
 
 # Initialize chat history in session state
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
+# Get Prompt
 prompt = st.chat_input(key="chat", placeholder="Ask me something")
+
 # Display the chat history using chat UI
+col1, col3, col2 = st.columns([6, 0.1, 3])
+
 with col1:
     # Display chat history
     for message in st.session_state.chat_history:
