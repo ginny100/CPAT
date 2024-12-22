@@ -1,9 +1,9 @@
 # Comprehensive Popular AI Tools Playground
-- Audio Recognition
-- Image Generation
+- [ ] Audio Recognition
+- [ ] Image Generation
 - [x] LLMs Playground
-- Math Solver
-- MultiModal Caption Generator
+- [ ] Math Solver
+- [ ] MultiModal Caption Generator
 - [x] Multimodal Video Generation
 
 ### Installation
