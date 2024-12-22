@@ -1,4 +1,4 @@
-# Comprehensive Popular AI Tools UI
+# Comprehensive Popular AI Tools Playground
 - LLMs Playground
 - Audio Recognition
 - Chatbot
@@ -13,6 +13,9 @@
    ```
 
 2. **Create a Virtual Environment (Optional but Recommended)**:
+   
+   _Notes:_ Before creating a new `venv`, make sure you've deletec all the existing hidden `venv` in your directory.
+
    It's recommended to create a virtual environment to manage dependencies:
    ```bash
    python -m venv venv
