@@ -7,8 +7,6 @@ st.write("# Welcome to my AI-powered App 👋")
 
 st.markdown(
     """
-        List Backend was listed here:
-        - Chabot Backend: [Link Colab](https://colab.research.google.com/drive/1XIZikuY3KtZzfnDG3wEcBBIHJhhdKgU-?usp=sharing)
-        
+    This app is a collection of popular AI tools that you can use to generate images, captions, and more.
     """
 )
