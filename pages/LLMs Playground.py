@@ -22,7 +22,7 @@ if "flask_api_url" not in st.session_state:
 def setup_backend():
     st.markdown(
         """
-        Run [LLMs Playground Server](https://colab.research.google.com/drive/1qjF2inooQR0eOXAfnnDKM4aI5j1V6zCe) and paste the Ngrok link below.
+        Run the [server](https://colab.research.google.com/drive/11FLH820TFiXSKA48uZbF6GdVB213JrAD#scrollTo=TqzJlsGZORDI) and paste the Ngrok link below.
         """
     )
     link = st.text_input("Backend URL", "")

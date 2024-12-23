@@ -23,7 +23,7 @@ if "img_flask_api_url" not in st.session_state:
 def setup_backend():
     st.markdown(
         """
-        Run [Image Generation Server](https://colab.research.google.com/drive/1pX-H3jojIzPmLxxcrGdLSwJvC8oe3dvM#scrollTo=m_W92R6c54lM) and paste the Ngrok link below.
+        Run the [server](https://colab.research.google.com/drive/11FLH820TFiXSKA48uZbF6GdVB213JrAD#scrollTo=TqzJlsGZORDI) and paste the Ngrok link below.
         """
     )
     link = st.text_input("Backend URL", "")

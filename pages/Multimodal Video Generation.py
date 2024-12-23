@@ -16,29 +16,29 @@ page = st.markdown("""
 session_id = str(uuid.uuid4())
 
 # Initialize the session state for the backend URL
-if "img_flask_api_url" not in st.session_state:
-    st.session_state.img_flask_api_url = None
+if "video_flask_api_url" not in st.session_state:
+    st.session_state.video_flask_api_url = None
 
 # Function to display the dialog and set the URL
 @st.dialog("Setup Backend")
 def setup_backend():
     st.markdown(
         """
-        Run [Multimodal Video Generation Server](https://colab.research.google.com/drive/1Zrmyong7a1HV_Qk_cy4BKpUZ8KWtRjOh) and paste the Ngrok link below.
+        Run the [server](https://colab.research.google.com/drive/11FLH820TFiXSKA48uZbF6GdVB213JrAD#scrollTo=TqzJlsGZORDI) and paste the Ngrok link below.
         """
     )
     link = st.text_input("Backend URL", "")
     if st.button("Save"):
-        st.session_state.img_flask_api_url = "{}/generate_video".format(link)  # Update ngrok URL
+        st.session_state.video_flask_api_url = "{}/generate_video".format(link)  # Update ngrok URL
         st.rerun()  # Re-run the app to close the dialog
 
 # Display the setup option if the URL is not set
-if st.session_state.img_flask_api_url is None:
+if st.session_state.video_flask_api_url is None:
     setup_backend()
 
 # Once the URL is set, display it or proceed with other functionality
-if st.session_state.img_flask_api_url:
-    st.success(f"Backend is set to: {st.session_state.img_flask_api_url}")
+if st.session_state.video_flask_api_url:
+    st.success(f"Backend is set to: {st.session_state.video_flask_api_url}")
 
 # Separate input for image upload
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
@@ -63,7 +63,7 @@ if user_prompt and uploaded_file and button:
     }
     
     # Send the POST request to the Flask API
-    response = requests.post(st.session_state.img_flask_api_url, files=files, data=data)
+    response = requests.post(st.session_state.video_flask_api_url, files=files, data=data)
     
     # Check if the request was successful
     if response.status_code == 200:
