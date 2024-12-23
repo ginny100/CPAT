@@ -22,7 +22,7 @@ if "img_flask_api_url" not in st.session_state:
 def setup_backend():
     st.markdown(
         """
-        Run the backend [here]() and paste the Ngrok link below.
+        Run [Multimodal Caption Generator Server](https://colab.research.google.com/drive/13BRgU-I7plPzqZWtaexLHzMa3Fbh4-El) and paste the Ngrok link below.
         """
     )
     link = st.text_input("Backend URL", "")
@@ -38,14 +38,14 @@ if st.session_state.img_flask_api_url is None:
 if st.session_state.img_flask_api_url:
     st.success(f"Backend is set to: {st.session_state.img_flask_api_url}")
 
-# TODO 1: Upload File
+# Upload File
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
 # Display the uploaded image with width 400
 if uploaded_file is not None:
     st.image(uploaded_file, width=400)
 
-# TODO 2: Get Prompt
+# Get Prompt
 user_prompt = st.text_input("Enter a prompt")
 
 button = st.button("Generate Caption")
@@ -56,7 +56,7 @@ if user_prompt and uploaded_file and button:
     files = {'image': uploaded_file}
     data = {'prompt': user_prompt}
     
-    # TODO 3: Send prompt and image to server
+    # Send prompt and image to server
     response = requests.post(st.session_state.img_flask_api_url, files=files, data=data)
     
     # Check if the request was successful
@@ -65,7 +65,7 @@ if user_prompt and uploaded_file and button:
         api_response = response.json()
         generated_caption = api_response.get("response", "No caption received.")
         
-        # TODO 4: Display the generated caption with enhanced formatting
+        # Display the generated caption with enhanced formatting
         st.markdown(f"**Generated Caption:** {generated_caption}")
         
     else:
